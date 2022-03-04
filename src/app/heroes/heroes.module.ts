@@ -12,10 +12,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 
 
-
-
-
-
 @NgModule({
   declarations: [
     AgregarComponent,
