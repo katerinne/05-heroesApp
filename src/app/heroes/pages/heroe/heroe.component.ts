@@ -39,7 +39,7 @@ export class HeroeComponent implements OnInit {
   }
 
   regresar(){
-    this.router.navigate([]);
+    this.router.navigate(['heroes/listado']);
   }
 
 }
