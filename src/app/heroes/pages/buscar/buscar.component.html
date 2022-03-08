@@ -7,23 +7,27 @@
     </div>
     <div>
       <h3>Buscador</h3>
-      {{ termino }}
         <mat-form-field>
-          <mat-label>Number</mat-label>
            <input type="text"
-                   placeholder="Pick one"
+                   placeholder="Ingrese nombre"
                    aria-label="Number"
                    matInput
-                   [(ngModel)]="termino"
                   [matAutocomplete]="auto"
+                  [(ngModel)]="termino"
                   (input)="buscando()">
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-autocomplete autoActiveFirstOption
+                              #auto="matAutocomplete"
+                              (optionSelected)="opcionSeleccionada( $event )">
               <mat-option *ngFor="let heroe of heroes" [value]="heroe">
                            {{heroe.superhero}}
               </mat-option>
             </mat-autocomplete>
         </mat-form-field>
 
+    </div>
+
+    <div>
+      <pre>{{ heroeSeleccionado | json }} </pre>
     </div>
 
   </div>
