@@ -5,6 +5,8 @@ import { switchMap } from 'rxjs';
 
 import { Heroe, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../service/heroes.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarComponent } from '../../components/confirmar/confirmar.component';
 
 
 
@@ -45,7 +47,8 @@ export class AgregarComponent implements OnInit {
   constructor( private heroesService: HeroesService,
                private activatedRoute: ActivatedRoute,
                private router: Router,
-               private snackBar: MatSnackBar) { }
+               private snackBar: MatSnackBar,
+               public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if(!this.router.url.includes('editar')){
@@ -77,11 +80,15 @@ export class AgregarComponent implements OnInit {
   }
 
   borrarHeroe(){
+    this.dialog.open(ConfirmarComponent,{
+      width: '250px'
+    });
+    /*
       this.heroesService.borrarHeroe(this.heroe.id!)
       .subscribe( resp => {
           this.router.navigate(['/heroes']);
           this.mostrarSnackbar('Registro borrado');
-      });
+      });*/
   }
 
   mostrarSnackbar(mensaje: string){
