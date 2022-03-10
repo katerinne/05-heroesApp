@@ -18,6 +18,7 @@ import { HeroesService } from '../../service/heroes.service';
   `
   ]
 })
+
 export class AgregarComponent implements OnInit {
 
   publishers = [
@@ -46,7 +47,7 @@ export class AgregarComponent implements OnInit {
 
   ngOnInit(): void {
     if(!this.router.url.includes('editar')){
-      return ;
+      return;
     }
     this.activatedRoute.params
     .pipe(
@@ -59,7 +60,6 @@ export class AgregarComponent implements OnInit {
       if(this.heroe.superhero.trim().length === 0){
         return;
       }
-
       if( this.heroe.id ){
           // modificar
           this.heroesService.actualizarHeroe( this.heroe )
@@ -70,6 +70,13 @@ export class AgregarComponent implements OnInit {
             this.router.navigate(['/heroes/editar', heroe.id]);
           })
       }
+  }
+
+  borrarHeroe(){
+      this.heroesService.borrarHeroe(this.heroe.id!)
+      .subscribe( resp => {
+          this.router.navigate(['/heroes']);
+      });
   }
 
 }
