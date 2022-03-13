@@ -1,0 +1,5 @@
+{
+    "editor.tabCompletion": "on",
+    "workbench.editor.wrapTabs": true,
+    "prettier.useTabs": true
+}
